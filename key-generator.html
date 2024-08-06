@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate String</title>
+  <script>
+    function generateString() {
+      const length = 32;
+      const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    function copyToClipboard() {
+      const generatedString = generateString();
+      const el = document.createElement('textarea');
+      el.value = generatedString;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      alert('Generated String: ' + generatedString + ' (Copied to clipboard)');
+    }
+  </script>
+</head>
+<body onload="copyToClipboard()">
+</body>
+</html>
